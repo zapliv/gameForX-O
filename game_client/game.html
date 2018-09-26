@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>XO</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="/game_client/style.css">
+		<script>var idGame = {{idGame}}, mySign = '{{mySign}}';</script>
+		<script src="/game_client/game.js"></script>
+	</head>
+	<body class="body">
+		<div class="wrap">
+			<div class="leftPanel">
+				<div><b>Идентификатор игры:</b></br>{{idGame}}</div>
+				</br>
+				<div><b>Вы играете за</b> <div class="singleSign sign{{mySign}}"></div></div>
+				</br>
+				<div><b>Статус игры:</b></br><span id="statusText">Ждём второго игрока...</span></div>
+				</br>
+				<div><b>Осталось времени на ход:</b></br><span id="timer">60</span> сек.</div>
+			</div>
+			<div class="area">
+				{{playingArea}}
+			</div>
+		</div>
+	</body>
+</html>

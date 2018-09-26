@@ -1,0 +1,98 @@
+html {
+  width: 100%;
+  height: 100%;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #808080;
+}
+
+.wrap {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 0;
+  min-width: 0;
+  background-color: #FFFFFF;
+  padding: 30px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -23px 0 20px -23px rgba(0, 0, 0, .8), 23px 0 20px -23px rgba(0, 0, 0, .8), 0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.leftPanel {
+  width: 200px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 200px;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
+  padding-right: 20px;
+}
+
+.area {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.playingAreaTable {
+  border-collapse: collapse;
+}
+
+.cell {
+  border: 2px solid #FFFFFF;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  background-color: #F5F5F5;
+}
+
+.cell:hover {
+  background-color: #DCDCDC;
+}
+
+.cross, .signx {
+  background-image: url("/game_client/cross.svg");
+}
+
+.radio, .signo {
+  background-image: url("/game_client/radio.svg");
+}
+
+.singleSign {
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  margin-bottom: -6px;
+  margin-left: 5px;
+}
