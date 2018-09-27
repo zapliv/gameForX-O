@@ -1,8 +1,7 @@
-var http = require('http');
-var url = require('url');
+var http = require('http'),
+   url = require('url');
 var mime = require('mime');
 const fs = require('fs');
-//var querystring = require('querystring');
 
 function start(route, handle) {
    function onRequest(request, response) {
@@ -10,18 +9,6 @@ function start(route, handle) {
 
       console.log('Request for ' + pathname + ' received.');
 
-      // if (pathname === '/game') {
-      // 	var postData = '';
-      //    request.on('data', function(data) {
-      //       postData += data;
-      //    });
-      //    request.on('end', function() {
-      //       request.post = querystring.parse(postData);
-      //       debugger;
-      //    });
-      //    response.writeHead(200, {'Content-Type': 'text/plain'});
-      //    response.end('dada');
-      // }
       fs.readFile('.' + pathname, function(err, content) {
          if (!err) {
             response.writeHead(200, {'content-type': mime.getType(pathname)});

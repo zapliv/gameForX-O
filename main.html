@@ -5,15 +5,17 @@
 	<link rel="stylesheet" type="text/css" href="/game_client/style.css">
 	<title>XO</title>
 	</head>
-	<body>
-		<a href="/newgame">
-		<p style="text-align: center">
-		<button onlick="return false;">Новая игра</button></a>
-		<form method="GET" action="/connect/">
-			<p style="text-align: center" >
-			<input type="text" id="idgame" name="idgame" />
-			<input type="submit" value="Присоединиться к игре"/>
+   <body class="body">
+      <div class="wrap wrapMain">
+			<h2 class="titleGame">Крестики-ноликина</br>на бесконечном поле</h2>
+		   </br>
+			<a href="/newgame"><button onlick="return false;">Новая игра</button></a>
+		   </br>
+			<form method="GET" action="/connect/">
+				<input type="text" id="idgame" name="idgame" />
+				<input type="submit" value="Присоединиться к игре"/>
+				</form>
 			</form>
-		</form>
+		</div>
 	</body>
 </html>
