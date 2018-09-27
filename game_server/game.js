@@ -15,10 +15,6 @@ function Game(options) {
    this.countSteps = 0;
    this.lastStep = null;
 
-   this.startGame = function() {
-
-   };
-
    this.userStep = function(idCell, idUser) {
       var result = {
             isTrue: false,
@@ -135,6 +131,7 @@ function Game(options) {
          this.isReadyUserX = true;
          if (this.isReadyUserO) {
             this.isStarted = true;
+            this.timeLastStep = Date.now();
             return true;
          }
       }
@@ -142,6 +139,7 @@ function Game(options) {
          this.isReadyUserO = true;
          if (this.isReadyUserX) {
             this.isStarted = true;
+            this.timeLastStep = Date.now();
             return true;
          }
       }
