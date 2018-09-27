@@ -31,7 +31,7 @@ function Game(idGame, mySign) {
                idGame: self.idGame,
                type: 'checkReady'
             }, function(response) {
-               if (!response.ready && window.flagInfinity) {
+               if (!response.ready) {
                   timerId = setTimeout(tick, 1000);
                   return;
                }
@@ -99,6 +99,13 @@ function Game(idGame, mySign) {
             return;
          }
 
+         // Если вышло время, то ничего не делаем
+         // По окончанию времени посылается запрос на подтверждение
+         // и выводится результат
+         if (response.timeIsUp) {
+            return;
+         }
+
          eventObject.classList.add(response.sign === 'x' ? 'cross' : 'radio');
          if (response.isWin) {
             self.timerIsWork = false;
@@ -113,6 +120,7 @@ function Game(idGame, mySign) {
       });
    };
 
+   // Обновить таймер
    this.refreshAndStartTimer = function() {
       var self = this,
          timerSpan = document.querySelector('#timer'),
@@ -127,6 +135,17 @@ function Game(idGame, mySign) {
          if (currentSec > 0) {
             currentSec--;
             timerSpan.innerHTML = currentSec.toString();
+         } else {
+            currentSec++;
+            self.sendPostDataToServer({
+               idGame: self.idGame,
+               type: 'timeIsUp'
+            }, function(response) {
+               if (response.isTrue) {
+                  self.timerIsWork = false;
+                  alert('Время вышло!' + (response.youWinner ? ' Вы выиграли!' : ' Вы проиграли =('));
+               }
+            });
          }
 
          if (!self.timerIsWork) {
@@ -147,7 +166,6 @@ function Game(idGame, mySign) {
 }
 
 
-window.flagInfinity = true;
 var game;
 
 // После загрузки страницы создаём игру

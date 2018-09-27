@@ -22,9 +22,16 @@ function Game(options) {
    this.userStep = function(idCell, idUser) {
       var result = {
             isTrue: false,
-            isWin: false
+            isWin: false,
+            timeIsUp: false
          },
          sign = idUser === this.idUserX ? 'x' : 'o';
+
+      // Проверяем, не прошло ли больше минуты
+      if (Date.now() - this.timeLastStep > 61000) {
+         result['timeIsUp'] = true;
+         return result;
+      }
 
       // Проверяем, чья очередь ходить
       if (this.currentUser !== idUser) {
@@ -41,6 +48,7 @@ function Game(options) {
       this.playingArea[idCell] = sign;
       this.countSteps++;
       this.lastStep = idCell;
+      this.timeLastStep = Date.now();
       result['isTrue'] = true;
       result['sign'] = sign;
       if (this._checkStepOnWin(idCell, sign)) {
@@ -138,6 +146,21 @@ function Game(options) {
          }
       }
       return false;
+   };
+
+   // Говорят, что время истекло
+   this.timeIsUp = function(idUser) {
+      // Проверим, вдруг игра уже закончена или перепроверим время
+      if (!this.isStarted || Date.now() - this.timeLastStep > 60000) {
+         this.isStarted = false;
+         return {
+            isTrue: true,
+            youWinner: idUser !== this.currentUser
+         };
+      }
+      return {
+         isTrue: false
+      };
    };
 }
 

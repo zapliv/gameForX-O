@@ -92,6 +92,11 @@ function game(request, response) {
       if (request.post.type === 'checkStepOtherUser') {
          response.end(JSON.stringify(game.checkStepOtherUser(cookie.idUser)));
       }
+
+      // Если это утверждение, что время истекло
+      if (request.post.type === 'timeIsUp') {
+         response.end(JSON.stringify(game.timeIsUp(cookie.idUser)));
+      }
    });
 }
 

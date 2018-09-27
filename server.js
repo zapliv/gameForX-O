@@ -36,7 +36,7 @@ function start(route, handle) {
 
    }
 
-   http.createServer(onRequest).listen(8888, '192.168.0.104');
+   http.createServer(onRequest).listen(8888);
    console.log('Server has started.');
 }
 
